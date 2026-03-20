@@ -1,0 +1,27 @@
+{
+  "name": "techserverproyect",
+  "version": "1.0.0",
+  "description": "MoonBloom – Plataforma de Seguimiento del Ciclo y Bienestar",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Frijol75/TechServerProyect.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Frijol75/TechServerProyect/issues"
+  },
+  "homepage": "https://github.com/Frijol75/TechServerProyect#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "mongoose": "^9.3.1"
+  }
+}
