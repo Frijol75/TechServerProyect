@@ -1,0 +1,109 @@
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-7 col-md-9">
+
+      <a href="/calendario" class="text-decoration-none d-inline-flex align-items-center mb-3" style="color:var(--mb-muted);">
+        <i class="bi bi-arrow-left me-1"></i>Volver al calendario
+      </a>
+
+      <div class="mb-card">
+        <h2 class="fw-bold mb-1">
+          <i class="bi bi-journal-plus me-2" style="color:var(--mb-primary);"></i>
+          Registro del día
+        </h2>
+        <p class="text-muted mb-4">Cuéntale a MoonBloom cómo te sientes hoy</p>
+
+        {{#if error}}
+        <div class="alert alert-danger border-0 rounded-3 py-2">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>{{error}}
+        </div>
+        {{/if}}
+
+        <form action="/registros/nuevo" method="POST" class="mb-form">
+
+          <!-- Ciclo asociado -->
+          <div class="mb-3">
+            <label for="cycleId" class="form-label">Ciclo asociado</label>
+            {{#if cycles.length}}
+            <select id="cycleId" name="cycleId" class="form-select" required>
+              <option value="">Selecciona un ciclo...</option>
+              {{#each cycles}}
+              <option value="{{this._id}}">
+                Inicio: {{formatDate this.startDate}}
+                {{#if this.endDate}} — Fin: {{formatDate this.endDate}}{{/if}}
+              </option>
+              {{/each}}
+            </select>
+            {{else}}
+            <div class="alert alert-warning border-0 rounded-3 py-2 mb-0">
+              <i class="bi bi-exclamation-circle me-2"></i>
+              No tienes ciclos registrados.
+              <a href="/ciclos/nuevo" class="fw-semibold" style="color:var(--mb-primary);">Crea uno primero</a>.
+            </div>
+            {{/if}}
+          </div>
+
+          <!-- Fecha -->
+          <div class="mb-3">
+            <label for="date" class="form-label">Fecha</label>
+            <input type="date" id="date" name="date" class="form-control" required />
+          </div>
+
+          <!-- Humor -->
+          <div class="mb-3">
+            <label for="mood" class="form-label">Estado de ánimo</label>
+            <select id="mood" name="mood" class="form-select">
+              <option value="">Selecciona...</option>
+              <option value="😊 Feliz">😊 Feliz</option>
+              <option value="😌 Tranquila">😌 Tranquila</option>
+              <option value="😔 Triste">😔 Triste</option>
+              <option value="😤 Irritable">😤 Irritable</option>
+              <option value="😴 Cansada">😴 Cansada</option>
+              <option value="😰 Ansiosa">😰 Ansiosa</option>
+              <option value="🥰 Enérgica">🥰 Enérgica</option>
+            </select>
+          </div>
+
+          <!-- Flujo -->
+          <div class="mb-3">
+            <label for="flow" class="form-label">
+              Intensidad del flujo
+              <span class="text-muted fw-normal">(1 = muy leve, 5 = muy intenso)</span>
+            </label>
+            <div class="d-flex gap-2">
+              <input type="radio" class="btn-check" name="flow" id="flow1" value="1" /><label class="btn btn-outline-secondary flex-fill" for="flow1">1</label>
+              <input type="radio" class="btn-check" name="flow" id="flow2" value="2" /><label class="btn btn-outline-secondary flex-fill" for="flow2">2</label>
+              <input type="radio" class="btn-check" name="flow" id="flow3" value="3" /><label class="btn btn-outline-secondary flex-fill" for="flow3">3</label>
+              <input type="radio" class="btn-check" name="flow" id="flow4" value="4" /><label class="btn btn-outline-secondary flex-fill" for="flow4">4</label>
+              <input type="radio" class="btn-check" name="flow" id="flow5" value="5" /><label class="btn btn-outline-secondary flex-fill" for="flow5">5</label>
+            </div>
+          </div>
+
+          <!-- Síntomas -->
+          <div class="mb-3">
+            <label for="symptoms" class="form-label">
+              Síntomas
+              <span class="text-muted fw-normal">(separados por coma)</span>
+            </label>
+            <input type="text" id="symptoms" name="symptoms" class="form-control"
+              placeholder="Ej: cólicos, dolor de cabeza, fatiga" />
+          </div>
+
+          <!-- Notas -->
+          <div class="mb-4">
+            <label for="notes" class="form-label">Notas personales</label>
+            <textarea id="notes" name="notes" class="form-control" rows="3"
+              placeholder="¿Cómo fue tu día?"></textarea>
+          </div>
+
+          <div class="d-grid">
+            <button type="submit" class="btn btn-moon py-2 fs-6">
+              <i class="bi bi-check-circle-fill me-2"></i>Guardar registro
+            </button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,257 @@
+/* ═══════════════════════════════════════════════════════════════
+   MoonBloom — Custom Styles
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  --mb-primary:   #c2185b;
+  --mb-secondary: #880e4f;
+  --mb-accent:    #f8bbd0;
+  --mb-bg:        #fce4ec;
+  --mb-dark:      #1a1a2e;
+  --mb-card-bg:   #ffffff;
+  --mb-text:      #37374a;
+  --mb-muted:     #78688a;
+  --mb-radius:    14px;
+  --mb-shadow:    0 4px 24px rgba(194, 24, 91, 0.10);
+}
+
+/* ── Base ──────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #fce4ec 0%, #fdf2f8 100%);
+  min-height: 100vh;
+  color: var(--mb-text);
+  margin: 0;
+}
+
+.my-6 { margin-top: 4rem !important; margin-bottom: 4rem !important; }
+
+/* ── Navbar ────────────────────────────────────────────────────── */
+#main-navbar {
+  background: linear-gradient(135deg, var(--mb-secondary) 0%, var(--mb-primary) 100%);
+  box-shadow: 0 2px 16px rgba(136, 14, 79, 0.25);
+  padding: 0.7rem 0;
+}
+#main-navbar .navbar-brand { font-size: 1.35rem; letter-spacing: -0.5px; }
+#main-navbar .nav-link {
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+#main-navbar .nav-link:hover { background: rgba(255,255,255,0.18); }
+
+/* ── Cards ─────────────────────────────────────────────────────── */
+.mb-card {
+  background: var(--mb-card-bg);
+  border-radius: var(--mb-radius);
+  box-shadow: var(--mb-shadow);
+  padding: 1.75rem;
+  border: 1px solid rgba(194, 24, 91, 0.07);
+}
+
+/* ── Botones ───────────────────────────────────────────────────── */
+.btn-moon {
+  background: linear-gradient(135deg, var(--mb-primary), var(--mb-secondary));
+  color: #fff !important;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  padding: 0.5rem 1.4rem;
+  transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 14px rgba(194,24,91,0.25);
+}
+.btn-moon:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(194,24,91,0.35);
+}
+
+/* ── Stat cards ────────────────────────────────────────────────── */
+.stat-card {
+  background: #fff;
+  border-radius: var(--mb-radius);
+  padding: 1.5rem 1.75rem;
+  box-shadow: var(--mb-shadow);
+  border-left: 5px solid var(--mb-primary);
+  transition: transform 0.2s;
+}
+.stat-card:hover { transform: translateY(-3px); }
+.stat-card .stat-number {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--mb-primary);
+  line-height: 1;
+}
+.stat-card .stat-label {
+  font-size: 0.8rem;
+  color: var(--mb-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 0.4rem;
+}
+
+/* ── Empty state ───────────────────────────────────────────────── */
+.empty-state { text-align: center; padding: 3rem 1rem; color: var(--mb-muted); }
+.empty-state .empty-icon { font-size: 3.5rem; display: block; margin-bottom: 1rem; }
+
+/* ── Form ──────────────────────────────────────────────────────── */
+.mb-form .form-control,
+.mb-form .form-select,
+.mb-form textarea {
+  border-radius: 10px;
+  border: 1.5px solid #e8b4c8;
+  padding: 0.6rem 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  font-size: 0.95rem;
+}
+.mb-form .form-control:focus,
+.mb-form .form-select:focus,
+.mb-form textarea:focus {
+  border-color: var(--mb-primary);
+  box-shadow: 0 0 0 3px rgba(194, 24, 91, 0.12);
+  outline: none;
+}
+.mb-form label.form-label {
+  font-weight: 600;
+  color: var(--mb-muted);
+  margin-bottom: 0.35rem;
+  font-size: 0.88rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ── Input con icono ───────────────────────────────────────────── */
+.input-group-icon { position: relative; }
+.input-group-icon .field-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--mb-primary);
+  font-size: 1rem;
+  z-index: 2;
+}
+.input-group-icon .form-control { padding-left: 2.7rem; }
+
+/* ── Auth ──────────────────────────────────────────────────────── */
+.auth-wrapper {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+.auth-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 430px;
+  box-shadow: 0 8px 40px rgba(194, 24, 91, 0.13);
+}
+.auth-logo { font-size: 3rem; }
+
+/* ── Hero landing ──────────────────────────────────────────────── */
+.hero-full {
+  background: linear-gradient(135deg, var(--mb-secondary) 0%, var(--mb-primary) 60%, #e91e8c 100%);
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: 4rem 0;
+  position: relative;
+  overflow: hidden;
+}
+.hero-full::before {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 50%;
+  top: -100px; right: -100px;
+}
+.hero-badge {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  border-radius: 20px;
+  padding: 0.3rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  backdrop-filter: blur(8px);
+}
+.hero-emoji-wrap {
+  animation: float 3s ease-in-out infinite;
+}
+.hero-big-emoji { font-size: 10rem; }
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-18px); }
+}
+
+/* ── Beneficios ────────────────────────────────────────────────── */
+.section-title { color: var(--mb-secondary); }
+.benefit-card {
+  background: #fff;
+  border-radius: var(--mb-radius);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: var(--mb-shadow);
+  transition: transform 0.2s;
+  height: 100%;
+}
+.benefit-card:hover { transform: translateY(-4px); }
+.benefit-icon { font-size: 2.5rem; }
+
+/* ── CTA section ───────────────────────────────────────────────── */
+.cta-section {
+  background: linear-gradient(135deg, var(--mb-secondary), var(--mb-primary));
+  padding: 5rem 1rem;
+  margin-top: 4rem;
+}
+
+/* ── Dashboard hero ────────────────────────────────────────────── */
+.dashboard-hero {
+  background: linear-gradient(135deg, var(--mb-secondary), var(--mb-primary));
+  border-radius: 20px;
+  padding: 2rem 2.5rem;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  box-shadow: var(--mb-shadow);
+}
+
+/* ── Cycle info items ──────────────────────────────────────────── */
+.cycle-status-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; }
+.cycle-stat-item { display: flex; flex-direction: column; }
+.cycle-stat-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--mb-muted); font-weight: 600; }
+.cycle-stat-value { font-size: 1rem; font-weight: 600; color: var(--mb-text); margin-top: 0.2rem; }
+
+/* ── Calendar timeline ─────────────────────────────────────────── */
+.cycle-entry { border-left: 4px solid var(--mb-primary); }
+.cycle-entry-header { display: flex; justify-content: space-between; align-items: center; }
+.cycle-number { font-weight: 700; color: var(--mb-primary); display: flex; align-items: center; gap: 0.4rem; }
+.ci-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--mb-muted); font-weight: 600; display: block; }
+.ci-value { font-weight: 500; font-size: 0.95rem; }
+
+/* ── Badge ciclo ───────────────────────────────────────────────── */
+.badge-cycle {
+  background: var(--mb-accent);
+  color: var(--mb-secondary);
+  font-weight: 700;
+  border-radius: 20px;
+  padding: 0.3em 0.9em;
+  font-size: 0.82rem;
+}
+
+/* ── Footer ────────────────────────────────────────────────────── */
+#main-footer {
+  background: var(--mb-dark);
+  color: rgba(255,255,255,0.45);
+  margin-top: 0;
+}
