@@ -4,10 +4,10 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import path from "path";
-import cookieParser from "cookie-parser";
 import { engine } from "express-handlebars";
 
 import connectDB from "./config/db";
+import { errorHandler } from "./middleware/error.middleware";
 
 const app = express();
 
@@ -18,7 +18,6 @@ app.engine(
     layoutsDir: path.join(__dirname, "views", "layouts"),
     defaultLayout: "main",
     extname: ".handlebars",
-    // Permite acceder a propiedades de objetos Mongoose en templates
     runtimeOptions: {
       allowProtoPropertiesByDefault: true,
       allowProtoMethodsByDefault: true,
@@ -39,12 +38,10 @@ app.set("views", path.join(__dirname, "views"));
 
 // ── Archivos estáticos ───────────────────────────────────────────────────────
 app.use(express.static(path.join(__dirname, "views", "..", "src", "public")));
-// Fallback: también servir desde la carpeta public adyacente al directorio de ejecución
 app.use(express.static(path.join(__dirname, "public")));
 
-// ── Middleware ───────────────────────────────────────────────────────────────
+// ── Middleware Global ────────────────────────────────────────────────────────
 app.use(cors());
-app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -60,6 +57,9 @@ app.use("/api/dailylogs", dailyLogRoutes);
 // ── Rutas UI (Handlebars) ────────────────────────────────────────────────────
 import uiRoutes from "./routes/ui.routes";
 app.use("/", uiRoutes);
+
+// ── Manejo Global de Errores ─────────────────────────────────────────────────
+app.use(errorHandler);
 
 // ── Arrancar servidor ────────────────────────────────────────────────────────
 const PORT: number = Number(process.env.PORT) || 3000;
