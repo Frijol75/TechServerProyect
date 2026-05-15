@@ -1,0 +1,103 @@
+<div class="container py-4">
+  <!-- ── Saludo ─────────────────────────────────────────────────────────── -->
+  <div class="dashboard-hero mb-4">
+    <div>
+      <h1 class="fw-bold mb-1">Hola, {{user.name}} 👋</h1>
+      <p class="mb-0 opacity-90">Aquí tienes un resumen de tu bienestar</p>
+    </div>
+    <a href="/registros/nuevo" class="btn btn-light fw-semibold px-4" style="color:var(--mb-primary);">
+      <i class="bi bi-journal-plus me-2"></i>Añadir síntoma del día
+    </a>
+  </div>
+
+  <!-- ── Stats ──────────────────────────────────────────────────────────── -->
+  <div class="row g-4 mb-4">
+    <div class="col-sm-6 col-lg-4">
+      <div class="stat-card">
+        <div class="stat-number">{{totalCycles}}</div>
+        <div class="stat-label">Ciclos registrados</div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-lg-4">
+      <div class="stat-card">
+        <div class="stat-number">{{totalLogs}}</div>
+        <div class="stat-label">Registros diarios</div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-lg-4">
+      <div class="stat-card">
+        {{#if lastLog}}
+          <div class="stat-number">{{lastLog.mood}}</div>
+          <div class="stat-label">Último humor registrado</div>
+        {{else}}
+          <div class="stat-number">—</div>
+          <div class="stat-label">Sin registros aún</div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Ciclo actual ───────────────────────────────────────────────────── -->
+  <div class="row g-4">
+    <div class="col-lg-7">
+      <div class="mb-card h-100">
+        <h5 class="fw-bold mb-3">
+          <i class="bi bi-calendar-heart-fill me-2" style="color:var(--mb-primary);"></i>
+          Estado de tu ciclo actual
+        </h5>
+        {{#if lastCycle}}
+          <div class="cycle-status-grid">
+            <div class="cycle-stat-item">
+              <span class="cycle-stat-label">Inicio</span>
+              <span class="cycle-stat-value">{{formatDate lastCycle.startDate}}</span>
+            </div>
+            <div class="cycle-stat-item">
+              <span class="cycle-stat-label">Fin</span>
+              <span class="cycle-stat-value">{{formatDate lastCycle.endDate}}</span>
+            </div>
+            <div class="cycle-stat-item">
+              <span class="cycle-stat-label">Duración</span>
+              <span class="cycle-stat-value">
+                {{#if lastCycle.durationDays}}{{lastCycle.durationDays}} días{{else}}—{{/if}}
+              </span>
+            </div>
+          </div>
+          {{#if lastCycle.notes}}
+          <p class="text-muted mt-3 mb-0">
+            <i class="bi bi-chat-left-text me-1"></i>{{lastCycle.notes}}
+          </p>
+          {{/if}}
+        {{else}}
+          <div class="empty-state py-3">
+            <span class="empty-icon" style="font-size:2.5rem;">📅</span>
+            <p class="text-muted mb-2">No tienes ciclos registrados aún.</p>
+            <a href="/ciclos/nuevo" class="btn btn-moon btn-sm">
+              <i class="bi bi-plus-circle-fill me-1"></i>Registrar mi primer ciclo
+            </a>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+
+    <!-- ── Accesos rápidos ───────────────────────────────────────────────── -->
+    <div class="col-lg-5">
+      <div class="mb-card h-100">
+        <h5 class="fw-bold mb-3">
+          <i class="bi bi-lightning-fill me-2" style="color:var(--mb-primary);"></i>
+          Accesos rápidos
+        </h5>
+        <div class="d-grid gap-2">
+          <a href="/registros/nuevo" class="btn btn-moon">
+            <i class="bi bi-journal-plus me-2"></i>Registrar síntomas de hoy
+          </a>
+          <a href="/registros" class="btn btn-outline-secondary rounded-3">
+            <i class="bi bi-journal-richtext me-2"></i>Ver todos mis registros
+          </a>
+          <a href="/calendario" class="btn btn-outline-secondary rounded-3">
+            <i class="bi bi-calendar-heart-fill me-2"></i>Ver mi calendario
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
