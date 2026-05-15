@@ -1,0 +1,81 @@
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-7 col-md-9">
+
+      <a href="/calendario" class="text-decoration-none d-inline-flex align-items-center mb-3" style="color:var(--mb-muted);">
+        <i class="bi bi-arrow-left me-1"></i>Volver al calendario
+      </a>
+
+      <div class="mb-card">
+        <h2 class="fw-bold mb-1">
+          <i class="bi bi-calendar-plus me-2" style="color:var(--mb-primary);"></i>
+          Nuevo ciclo
+        </h2>
+        <p class="text-muted mb-4">Registra un nuevo ciclo menstrual</p>
+
+        {{#if error}}
+        <div class="alert alert-danger border-0 rounded-3 py-2">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>{{error}}
+        </div>
+        {{/if}}
+
+        {{#if success}}
+        <div class="alert alert-success border-0 rounded-3 py-2">
+          <i class="bi bi-check-circle-fill me-2"></i>{{success}}
+        </div>
+        {{/if}}
+
+        <form action="/ciclos/nuevo" method="POST" class="mb-form">
+
+          <!-- Fecha de inicio -->
+          <div class="mb-3">
+            <label for="startDate" class="form-label">Fecha de inicio</label>
+            <div class="input-group-icon">
+              <i class="bi bi-calendar-event-fill field-icon"></i>
+              <input type="date" id="startDate" name="startDate" class="form-control ps-5" required />
+            </div>
+          </div>
+
+          <!-- Fecha de fin (opcional) -->
+          <div class="mb-3">
+            <label for="endDate" class="form-label">
+              Fecha de fin
+              <span class="text-muted fw-normal">(opcional — puedes agregarla después)</span>
+            </label>
+            <div class="input-group-icon">
+              <i class="bi bi-calendar-check-fill field-icon"></i>
+              <input type="date" id="endDate" name="endDate" class="form-control ps-5" />
+            </div>
+          </div>
+
+          <!-- Duración en días (opcional) -->
+          <div class="mb-3">
+            <label for="durationDays" class="form-label">
+              Duración
+              <span class="text-muted fw-normal">(días, opcional)</span>
+            </label>
+            <div class="input-group-icon">
+              <i class="bi bi-clock-fill field-icon"></i>
+              <input type="number" id="durationDays" name="durationDays" class="form-control ps-5"
+                placeholder="Ej: 28" min="1" max="90" />
+            </div>
+          </div>
+
+          <!-- Notas -->
+          <div class="mb-4">
+            <label for="notes" class="form-label">Notas</label>
+            <textarea id="notes" name="notes" class="form-control" rows="3"
+              placeholder="Observaciones generales del ciclo"></textarea>
+          </div>
+
+          <div class="d-grid">
+            <button type="submit" class="btn btn-moon py-2 fs-6">
+              <i class="bi bi-plus-circle-fill me-2"></i>Crear ciclo
+            </button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
