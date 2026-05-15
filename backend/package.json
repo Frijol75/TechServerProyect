@@ -2,9 +2,13 @@
   "name": "techserverproyect",
   "version": "1.0.0",
   "description": "MoonBloom – Plataforma de Seguimiento del Ciclo y Bienestar",
-  "main": "index.js",
+  "main": "dist/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node src/app.ts",
+    "dev": "nodemon",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
@@ -13,7 +17,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/Frijol75/TechServerProyect/issues"
   },
@@ -22,6 +25,15 @@
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
+    "express-handlebars": "^8.0.4",
     "mongoose": "^9.3.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/node": "^22.15.3",
+    "nodemon": "^3.1.14",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   }
 }

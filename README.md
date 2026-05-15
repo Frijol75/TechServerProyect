@@ -43,7 +43,7 @@ Crear archivo `.env`:
 
 ```env
 PORT=3000
-MONGO_URI=mongodb://localhost:27017/moonbloom
+MONGO_URI=mongodb://localhost:27017/
 ```
 
 ---
